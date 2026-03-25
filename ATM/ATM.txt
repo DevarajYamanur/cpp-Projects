@@ -1,0 +1,69 @@
+🔹 First: Include Guards
+
+#ifndef ACCOUNT_HPP
+#define ACCOUNT_HPP
+...
+#endif
+
+✅ What This Does:
+1. Prevents the class from being defined more than once if the header is included in multiple files.
+2. #ifndef = "if not defined"
+3. #define = define it now
+4. #endif = end of the guard
+
+This is called an include guard and is essential for large projects to avoid duplicate definitions and compiler errors.
+
+
+✅ Option 1: Use std::string (Recommended in Headers)   IMP**********
+#include <string>
+
+class Example {
+private:
+    std::string name;  // ✔️ Always safe in headers
+};
+
+✅ Option 2: Use using namespace std; (Works but avoid in headers)
+#include <string>
+using namespace std;  // 👇 Now you can do this
+
+class Example {
+private:
+    string name;  // ✔️ This works now
+};
+
+/************************************************************************
+
+#include "Account.hpp"
+#include <iostream>
+#include <iomanip>
+
+
+1. #include "Account.hpp" brings in the class definition and declarations (so this file can define them).
+2. <iostream> is used for input/output (e.g., std::cout).
+3. <iomanip> is used to format output, like setting decimal places using std::fixed and std::setprecision().
+
+
+
+////////////////////////////////////////////////////////////////
+std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+✅ What it does:
+This line clears the input buffer — specifically, it discards any remaining characters in the input stream up to and including the next newline (\n).
+
+🛠️ What does each part mean?
+std::cin.ignore(
+    std::numeric_limits<std::streamsize>::max(), // ← ignore up to the maximum number of characters
+    '\n'                                          // ← until a newline is found
+);
+
+| Part                                          | Meaning                                                                         |
+| --------------------------------------------- | ------------------------------------------------------------------------------- |
+| `std::cin.ignore()`                           | Function that skips characters in the input buffer                              |
+| `std::numeric_limits<std::streamsize>::max()` | A very large number (maximum size possible) — so you ignore a LOT of characters |
+| `'\n'`                                        | Stop ignoring when you hit the newline character                                |
+
+
+
+
+g++ -std=c++11 Account.cpp ATM.cpp ATMDemo.cpp -o atm
+./atm.exe

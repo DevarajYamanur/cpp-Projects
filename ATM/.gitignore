@@ -1,0 +1,26 @@
+# Compiled binaries
+*.exe
+*.out
+*.o
+
+# Build directories
+build/
+Debug/
+Release/
+
+# VS Code settings (optional: remove if you want to share settings)
+.vscode/
+
+# Object files
+*.obj
+*.elf
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
