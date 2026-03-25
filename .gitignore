@@ -1,0 +1,11 @@
+# Compiled binaries
+*.exe
+*.o
+*.obj
+
+# IDE folders
+.vscode/
+
+# Temporary files
+*.log
+HotelManagementSystem.txt
